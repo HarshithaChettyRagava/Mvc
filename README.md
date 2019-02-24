@@ -21,4 +21,4 @@ The App mainly focuses on developing a MVC for an University Degree Plan which i
 - GitHub Pages.
 
 ## Link
-Github - [https://github.com/HarshithaChettyRagava/Mvc/blob/master/README.md]
+Github - [https://github.com/HarshithaChettyRagava/Mvc]
