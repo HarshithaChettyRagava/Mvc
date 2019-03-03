@@ -10,8 +10,8 @@ namespace WebApplication2.Models
         public int CreditID { get; set; }
         public string CreditAbrrev { get; set; }
         public string CreditName { get; set; }
-        public string isSummer { get; set; }
-        public string isSpring { get; set; }
-        public string isFall { get; set; }
+        public int isSummer { get; set; }
+        public int isSpring { get; set; }
+        public int isFall { get; set; }
     }
 }
