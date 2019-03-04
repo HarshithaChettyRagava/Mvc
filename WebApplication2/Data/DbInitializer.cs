@@ -283,6 +283,44 @@ namespace WebApplication2.Data
                 context.SaveChanges();
             }
 
+
+            //StudentTerm Table
+            if (context.StudentTerms.Any())
+            {
+                Console.WriteLine("Student Term already exists");
+            }
+            else
+            {
+                var studentTerms = new StudentTerm[]
+                {
+                    new StudentTerm{StudentTermID = 1, StudentID=533569, StudentTermNo = 1, TermAbbrev="F18", TermName="Fall 2018"},
+                    new StudentTerm{StudentTermID = 2, StudentID=533569, StudentTermNo = 2, TermAbbrev="S19", TermName="Spring 2019"},
+                    new StudentTerm{StudentTermID = 3,StudentID=533569, StudentTermNo = 3, TermAbbrev="Su19", TermName="Summer 2019"},
+                    new StudentTerm{StudentTermID = 4, StudentID=533569, StudentTermNo = 4, TermAbbrev="F19", TermName="Fall 2019"},
+                    new StudentTerm{StudentTermID = 5, StudentID=533569, StudentTermNo = 5, TermAbbrev="S19", TermName="Spring 2019"},
+                    new StudentTerm{StudentTermID = 6, StudentID=533982, StudentTermNo = 1, TermAbbrev="F18", TermName="Fall 2018"},
+                    new StudentTerm{StudentTermID = 7, StudentID=533982, StudentTermNo = 2, TermAbbrev="S19", TermName="Spring 2019"},
+                    new StudentTerm{StudentTermID = 8, StudentID=533982, StudentTermNo = 3, TermAbbrev="F19", TermName="Fall 2019"},
+                    new StudentTerm{StudentTermID = 9, StudentID=533982, StudentTermNo = 4, TermAbbrev="S20", TermName="Spring 2020"},
+                    new StudentTerm{StudentTermID = 10, StudentID=533982, StudentTermNo = 5, TermAbbrev="Su20", TermName="Summer 2020"},
+                    new StudentTerm{StudentTermID = 11, StudentID=533573, StudentTermNo = 1, TermAbbrev="F18", TermName="Fall 2018"},
+                    new StudentTerm{StudentTermID = 12, StudentID=533573, StudentTermNo = 2, TermAbbrev="S19", TermName="Spring 2019"},
+                    new StudentTerm{StudentTermID = 13, StudentID=533573, StudentTermNo = 3, TermAbbrev="Su19", TermName="Summer 2019"},
+                    new StudentTerm{StudentTermID = 14, StudentID=533573, StudentTermNo = 4, TermAbbrev="F19", TermName="Fall 2019"},
+                    new StudentTerm{StudentTermID = 15, StudentID=533573, StudentTermNo = 5, TermAbbrev="S20", TermName="Spring 2020"}
+
+                };
+                Console.WriteLine($"Inserted {studentTerms.Length} new studentTerms.");
+
+                foreach (StudentTerm stt in studentTerms)
+                {
+                    context.StudentTerms.Add(stt);
+                }
+
+                context.SaveChanges();
+            }
+
+
         }
     }
 }
