@@ -185,7 +185,7 @@ namespace WebApplication2.Data
 
                 foreach (DegreePlan dp in degreeplans)
                 {
-                    context.Degreeplans.Add(dp);
+                    context.DegreePlans.Add(dp);
                 }
 
                 context.SaveChanges();

@@ -8,10 +8,13 @@ namespace WebApplication2.Models
     public class Slot
     {
         public int SlotID { get; set; }
-        public string Term { get; set; }
+        public int Term { get; set; }
         public string Status { get; set; }
 
-        public ICollection<DegreePlan> DegreenPlanID { get; set; }
-        public ICollection<Credit> CreditID { get; set; }
+        public int DegreePlanID { get; set; }
+        public int CreditID { get; set; }
+
+        public ICollection<DegreePlan> DegreePlans { get; set; }
+        public ICollection<Credit> Credits { get; set; }
     }
 }

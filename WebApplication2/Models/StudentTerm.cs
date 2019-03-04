@@ -8,10 +8,11 @@ namespace WebApplication2.Models
     public class StudentTerm
     {
         public int StudentTermID { get; set; }
-        public string StudentTermNo { get; set; }
+        public int StudentTermNo { get; set; }
         public string TermAbbrev { get; set; }
         public string TermName { get; set; }
+        public int StudentID { get; set; }
 
-        public ICollection<Student> StudentID { get; set; }
+        public ICollection<Student> Students { get; set; }
     }
 }
