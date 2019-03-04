@@ -72,6 +72,30 @@ namespace WebApplication2.Data
                 context.SaveChanges();
             }
 
+            //Student table
+            if (context.Students.Any())
+            {
+                Console.WriteLine("Student already exists");
+            }
+            else
+            {
+                var students = new Student[]
+                {
+                    new Student{StudentID = 1, FamilyName="Chetty Ragava", GivenName = "Harshitha", Snumber = 533569, Num919 = 919568034},
+                    new Student{StudentID = 2, FamilyName="Ali", GivenName = "Zaiba", Snumber = 533982, Num919 = 919569110},
+                    new Student{StudentID = 3, FamilyName="Nuka", GivenName = "Vamshi krishna", Snumber = 533573, Num919 = 919570332},
+
+                };
+                Console.WriteLine($"Inserted {students.Length} new students.");
+
+                foreach (Student st in students)
+                {
+                    context.Students.Add(st);
+                }
+
+                context.SaveChanges();
+            }
+
             //DegreeCredit table
             if (context.DegreeCredits.Any())
             {
@@ -141,7 +165,7 @@ namespace WebApplication2.Data
             }
 
             //Degreeplan table
-            if (context.Degreeplans.Any())
+            if (context.DegreePlans.Any())
             {
                 Console.WriteLine("DegreePlan already exists");
             }
@@ -150,11 +174,11 @@ namespace WebApplication2.Data
                 var degreeplans = new DegreePlan[]
                 {
                     new DegreePlan{DegreePlanID = 7251, StudentID=533569, DegreePlanAbbrev = "Super Fast", DegreePlanName="As fast as I can",DegreeID=3},
-                    new DegreePlan{DegreePlanID = 7252, DegreeAbrrev=533569, DegreePlanAbbrev = "Slow and Easy", DegreePlanName="Take a summer off",DegreeID=3},
-                    new DegreePlan{DegreePlanID = 7253, DegreeAbrrev=533682, DegreePlanAbbrev = "Easy study plan", DegreePlanName="Study with break",DegreeID=3},
-                    new DegreePlan{DegreePlanID = 7254, DegreeAbrrev=533982, DegreePlanAbbrev = "one year plan", DegreePlanName="Complete in one year",DegreeID=3},
-                    new DegreePlan{DegreePlanID = 7255, DegreeAbrrev=533573, DegreePlanAbbrev = "slow and steady", DegreePlanName="Maximum semester possible",DegreeID=3},
-                    new DegreePlan{DegreePlanID = 7256, DegreeAbrrev=533573, DegreePlanAbbrev = "Default fall plan", DegreePlanName="Default one and half year plan",DegreeID=3},
+                    new DegreePlan{DegreePlanID = 7252, StudentID=533569, DegreePlanAbbrev = "Slow and Easy", DegreePlanName="Take a summer off",DegreeID=3},
+                    new DegreePlan{DegreePlanID = 7253, StudentID=533682, DegreePlanAbbrev = "Easy study plan", DegreePlanName="Study with break",DegreeID=3},
+                    new DegreePlan{DegreePlanID = 7254, StudentID=533982, DegreePlanAbbrev = "one year plan", DegreePlanName="Complete in one year",DegreeID=3},
+                    new DegreePlan{DegreePlanID = 7255, StudentID=533573, DegreePlanAbbrev = "slow and steady", DegreePlanName="Maximum semester possible",DegreeID=3},
+                    new DegreePlan{DegreePlanID = 7256, StudentID=533573, DegreePlanAbbrev = "Default fall plan", DegreePlanName="Default one and half year plan",DegreeID=3},
 
                 };
                 Console.WriteLine($"Inserted {degreeplans.Length} new degreeplans.");
@@ -162,6 +186,98 @@ namespace WebApplication2.Data
                 foreach (DegreePlan dp in degreeplans)
                 {
                     context.Degreeplans.Add(dp);
+                }
+
+                context.SaveChanges();
+            }
+
+            //Slot table
+            if (context.Slots.Any())
+            {
+                Console.WriteLine("Slot already exists");
+            }
+            else
+            {
+                var slots = new Slot[]
+                {
+                    new Slot{SlotID = 1, DegreePlanID=7251, Term = 1, CreditID=542, Status="C"},
+                    new Slot{SlotID = 2, DegreePlanID=7251, Term = 1, CreditID=563, Status="C"},
+                    new Slot{SlotID = 3, DegreePlanID=7251, Term = 1, CreditID=560, Status="C"},
+                    new Slot{SlotID = 4, DegreePlanID=7251, Term = 2, CreditID=664, Status="A"},
+                    new Slot{SlotID = 5, DegreePlanID=7251, Term = 2, CreditID=6, Status="A"},
+                    new Slot{SlotID = 6, DegreePlanID=7251, Term = 2, CreditID=10, Status="A"},
+                    new Slot{SlotID = 7, DegreePlanID=7251, Term = 3, CreditID=618, Status="P"},
+                    new Slot{SlotID = 8, DegreePlanID=7251, Term = 3, CreditID=691, Status="P"},
+                    new Slot{SlotID = 9, DegreePlanID=7251, Term = 4, CreditID=692, Status="P"},
+                    new Slot{SlotID = 10, DegreePlanID=7251, Term = 4, CreditID=20, Status="P"},
+                    new Slot{SlotID = 11, DegreePlanID=7251, Term = 4, CreditID=555, Status="P"},
+                    new Slot{SlotID = 12, DegreePlanID=7252, Term = 1, CreditID=664, Status="P"},
+                    new Slot{SlotID = 13, DegreePlanID=7252, Term = 1, CreditID=64, Status="P"},
+                    new Slot{SlotID = 14, DegreePlanID=7252, Term = 1, CreditID=10, Status="P"},
+                    new Slot{SlotID = 15, DegreePlanID=7252, Term = 2, CreditID=691, Status="P"},
+                    new Slot{SlotID = 16, DegreePlanID=7252, Term = 2, CreditID=555, Status="P"},
+                    new Slot{SlotID = 17, DegreePlanID=7252, Term = 2, CreditID=618, Status="C"},
+                    new Slot{SlotID = 18, DegreePlanID=7252, Term = 3, CreditID=460, Status="C"},
+                    new Slot{SlotID = 19, DegreePlanID=7252, Term = 3, CreditID=542, Status="C"},
+                    new Slot{SlotID = 20, DegreePlanID=7252, Term = 3, CreditID=691, Status="A"},
+                     new Slot{SlotID =21, DegreePlanID=7252, Term = 4, CreditID=560, Status="C"},
+                    new Slot{SlotID = 22, DegreePlanID=7252, Term = 4, CreditID=20, Status="C"},
+                    new Slot{SlotID = 23, DegreePlanID=7252, Term = 4, CreditID=592, Status="C"},
+                    new Slot{SlotID = 24, DegreePlanID=7253, Term = 1, CreditID=542, Status="P"},
+                    new Slot{SlotID = 25, DegreePlanID=7253, Term = 1, CreditID=563, Status="P"},
+                    new Slot{SlotID = 26, DegreePlanID=7253, Term = 1, CreditID=460, Status="P"},
+                    new Slot{SlotID = 27, DegreePlanID=7253, Term = 2, CreditID=560, Status="A"},
+                    new Slot{SlotID = 28, DegreePlanID=7253, Term = 2, CreditID=664, Status="A"},
+                    new Slot{SlotID = 29, DegreePlanID=7253, Term = 2, CreditID=64, Status="A"},
+                    new Slot{SlotID = 30, DegreePlanID=7253, Term = 3, CreditID=691, Status="A"},
+                    new Slot{SlotID = 31, DegreePlanID=7253, Term = 3, CreditID=10, Status="A"},
+                    new Slot{SlotID = 32, DegreePlanID=7253, Term = 3, CreditID=555, Status="A"},
+                    new Slot{SlotID = 33, DegreePlanID=7253, Term = 4, CreditID=692, Status="C"},
+                    new Slot{SlotID = 34, DegreePlanID=7253, Term = 4, CreditID=20, Status="C"},
+                    new Slot{SlotID = 35, DegreePlanID=7253, Term = 4, CreditID=356, Status="C"},
+                    new Slot{SlotID = 36, DegreePlanID=7254, Term = 1, CreditID=460, Status="P"},
+                    new Slot{SlotID = 37, DegreePlanID=7254, Term = 1, CreditID=542, Status="P"},
+                    new Slot{SlotID = 38, DegreePlanID=7254, Term = 1, CreditID=356, Status="P"},
+                    new Slot{SlotID = 39, DegreePlanID=7254, Term = 2, CreditID=563, Status="C"},
+                    new Slot{SlotID = 40, DegreePlanID=7254, Term = 2, CreditID=560, Status="C"},
+                     new Slot{SlotID = 41, DegreePlanID=7254, Term = 2, CreditID=664, Status="C"},
+                    new Slot{SlotID = 42, DegreePlanID=7254, Term = 3, CreditID=618, Status="A"},
+                    new Slot{SlotID = 43, DegreePlanID=7254, Term = 3, CreditID=555, Status="A"},
+                    new Slot{SlotID = 44, DegreePlanID=7254, Term = 2, CreditID=664, Status="A"},
+                    new Slot{SlotID = 45, DegreePlanID=7254, Term = 4, CreditID=692, Status="P"},
+                    new Slot{SlotID = 46, DegreePlanID=7254, Term = 4, CreditID=10, Status="P"},
+                    new Slot{SlotID = 47, DegreePlanID=7254, Term = 4, CreditID=64, Status="P"},
+                    new Slot{SlotID = 48, DegreePlanID=7255, Term = 1, CreditID=356, Status="C"},
+                    new Slot{SlotID = 49, DegreePlanID=7255, Term = 1, CreditID=563, Status="C"},
+                    new Slot{SlotID = 50, DegreePlanID=7255, Term = 1, CreditID=542, Status="C"},
+                    new Slot{SlotID = 51, DegreePlanID=7255, Term = 2, CreditID=555, Status="C"},
+                    new Slot{SlotID = 52, DegreePlanID=7255, Term = 2, CreditID=664, Status="C"},
+                    new Slot{SlotID = 53, DegreePlanID=7255, Term = 2, CreditID=560, Status="C"},
+                    new Slot{SlotID = 54, DegreePlanID=7255, Term = 3, CreditID=318, Status="A"},
+                    new Slot{SlotID = 55, DegreePlanID=7255, Term = 3, CreditID=691, Status="A"},
+                    new Slot{SlotID = 56, DegreePlanID=7255, Term = 4, CreditID=692, Status="P"},
+                    new Slot{SlotID = 57, DegreePlanID=7255, Term = 4, CreditID=643, Status="P"},
+                    new Slot{SlotID = 58, DegreePlanID=7255, Term = 4, CreditID=10, Status="P"},
+                    new Slot{SlotID = 59, DegreePlanID=7255, Term = 5, CreditID=664, Status="P"},
+                    new Slot{SlotID = 60, DegreePlanID=7256, Term = 1, CreditID=356, Status="A"},
+                    new Slot{SlotID = 61, DegreePlanID=7256, Term = 1, CreditID=563, Status="A"},
+                    new Slot{SlotID = 62, DegreePlanID=7256, Term = 1, CreditID=542, Status="A"},
+                    new Slot{SlotID = 63, DegreePlanID=7256, Term = 2, CreditID=555, Status="P"},
+                    new Slot{SlotID = 64, DegreePlanID=7256, Term = 2, CreditID=644, Status="P"},
+                    new Slot{SlotID = 65, DegreePlanID=7256, Term = 2, CreditID=560, Status="P"},
+                    new Slot{SlotID = 66, DegreePlanID=7256, Term = 3, CreditID=618, Status="P"},
+                    new Slot{SlotID = 67, DegreePlanID=7256, Term = 3, CreditID=691, Status="P"},
+                    new Slot{SlotID = 67, DegreePlanID=7256, Term = 3, CreditID=691, Status="P"},
+                    new Slot{SlotID = 68, DegreePlanID=7256, Term = 4, CreditID=692, Status="P"},
+                    new Slot{SlotID = 69, DegreePlanID=7256, Term = 4, CreditID=643, Status="P"},
+                    new Slot{SlotID = 70, DegreePlanID=7256, Term = 5, CreditID=10, Status="P"},
+                    new Slot{SlotID = 71, DegreePlanID=7256, Term = 5, CreditID=664, Status="P"},
+                };
+                Console.WriteLine($"Inserted {slots.Length} new slots.");
+
+                foreach (Slot sl in slots)
+                {
+                    context.Slots.Add(sl);
                 }
 
                 context.SaveChanges();
