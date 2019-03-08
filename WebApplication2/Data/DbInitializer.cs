@@ -295,7 +295,7 @@ namespace WebApplication2.Data
                 {
                     new StudentTerm{StudentTermID = 1, StudentID=533569, StudentTermNo = 1, TermAbbrev="F18", TermName="Fall 2018"},
                     new StudentTerm{StudentTermID = 2, StudentID=533569, StudentTermNo = 2, TermAbbrev="S19", TermName="Spring 2019"},
-                    new StudentTerm{StudentTermID = 3,StudentID=533569, StudentTermNo = 3, TermAbbrev="Su19", TermName="Summer 2019"},
+                    new StudentTerm{StudentTermID = 3, StudentID=533569, StudentTermNo = 3, TermAbbrev="Su19", TermName="Summer 2019"},
                     new StudentTerm{StudentTermID = 4, StudentID=533569, StudentTermNo = 4, TermAbbrev="F19", TermName="Fall 2019"},
                     new StudentTerm{StudentTermID = 5, StudentID=533569, StudentTermNo = 5, TermAbbrev="S19", TermName="Spring 2019"},
                     new StudentTerm{StudentTermID = 6, StudentID=533982, StudentTermNo = 1, TermAbbrev="F18", TermName="Fall 2018"},
