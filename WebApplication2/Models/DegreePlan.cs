@@ -12,7 +12,7 @@ namespace WebApplication2.Models
         public string DegreePlanName { get; set; }
         public int StudentID { get; set; }
         public int DegreeID { get; set; }
-        public ICollection<Student> Students { get; set; }
-        public ICollection<Degree> Degrees { get; set; }
+        public Student Student { get; set; }
+        public Degree Degree { get; set; }
     }
 }
