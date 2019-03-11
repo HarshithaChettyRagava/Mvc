@@ -9,8 +9,6 @@ namespace WebApplication2.Models
     {
         public int DegreeID { get; set; }
         public string DegreeAbrrev { get; set; }
-        public String DegreeName { get; set; }
-        public int NoOfTerms { get; set; }
-
+        public string DegreeName { get; set; }
     }
 }

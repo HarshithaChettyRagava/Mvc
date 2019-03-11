@@ -12,7 +12,6 @@ namespace WebApplication2.Models
         public string TermAbbrev { get; set; }
         public string TermName { get; set; }
         public int StudentID { get; set; }
-
-        public ICollection<Student> Students { get; set; }
+        //public ICollection<Student> Students { get; set; }
     }
 }

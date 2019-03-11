@@ -194,10 +194,6 @@ namespace WebApplication2.Migrations
 
                     b.Property<string>("CreditName");
 
-                    b.Property<int?>("DegreeCreditID");
-
-                    b.Property<int?>("SlotID");
-
                     b.Property<int>("isFall");
 
                     b.Property<int>("isSpring");
@@ -205,10 +201,6 @@ namespace WebApplication2.Migrations
                     b.Property<int>("isSummer");
 
                     b.HasKey("CreditID");
-
-                    b.HasIndex("DegreeCreditID");
-
-                    b.HasIndex("SlotID");
 
                     b.ToTable("Credits");
                 });
@@ -223,13 +215,7 @@ namespace WebApplication2.Migrations
 
                     b.Property<string>("DegreeName");
 
-                    b.Property<int?>("DegreePlanID");
-
-                    b.Property<int>("NoOfTerms");
-
                     b.HasKey("DegreeID");
-
-                    b.HasIndex("DegreePlanID");
 
                     b.ToTable("Degrees");
                 });
@@ -261,13 +247,9 @@ namespace WebApplication2.Migrations
 
                     b.Property<string>("DegreePlanName");
 
-                    b.Property<int?>("SlotID");
-
                     b.Property<int>("StudentID");
 
                     b.HasKey("DegreePlanID");
-
-                    b.HasIndex("SlotID");
 
                     b.ToTable("DegreePlans");
                 });
@@ -297,8 +279,6 @@ namespace WebApplication2.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DegreePlanID");
-
                     b.Property<string>("FamilyName");
 
                     b.Property<string>("GivenName");
@@ -307,13 +287,7 @@ namespace WebApplication2.Migrations
 
                     b.Property<int>("Snumber");
 
-                    b.Property<int?>("StudentTermID");
-
                     b.HasKey("StudentID");
-
-                    b.HasIndex("DegreePlanID");
-
-                    b.HasIndex("StudentTermID");
 
                     b.ToTable("Students");
                 });
@@ -380,42 +354,6 @@ namespace WebApplication2.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebApplication2.Models.Credit", b =>
-                {
-                    b.HasOne("WebApplication2.Models.DegreeCredit")
-                        .WithMany("Credits")
-                        .HasForeignKey("DegreeCreditID");
-
-                    b.HasOne("WebApplication2.Models.Slot")
-                        .WithMany("Credits")
-                        .HasForeignKey("SlotID");
-                });
-
-            modelBuilder.Entity("WebApplication2.Models.Degree", b =>
-                {
-                    b.HasOne("WebApplication2.Models.DegreePlan")
-                        .WithMany("Degrees")
-                        .HasForeignKey("DegreePlanID");
-                });
-
-            modelBuilder.Entity("WebApplication2.Models.DegreePlan", b =>
-                {
-                    b.HasOne("WebApplication2.Models.Slot")
-                        .WithMany("DegreePlans")
-                        .HasForeignKey("SlotID");
-                });
-
-            modelBuilder.Entity("WebApplication2.Models.Student", b =>
-                {
-                    b.HasOne("WebApplication2.Models.DegreePlan")
-                        .WithMany("Students")
-                        .HasForeignKey("DegreePlanID");
-
-                    b.HasOne("WebApplication2.Models.StudentTerm")
-                        .WithMany("Students")
-                        .HasForeignKey("StudentTermID");
                 });
 #pragma warning restore 612, 618
         }

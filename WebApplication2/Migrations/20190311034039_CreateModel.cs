@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication2.Migrations
 {
-    public partial class initDb : Migration
+    public partial class CreateModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,6 +48,23 @@ namespace WebApplication2.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Credits",
+                columns: table => new
+                {
+                    CreditID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreditAbrrev = table.Column<string>(nullable: true),
+                    CreditName = table.Column<string>(nullable: true),
+                    isSummer = table.Column<int>(nullable: false),
+                    isSpring = table.Column<int>(nullable: false),
+                    isFall = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Credits", x => x.CreditID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DegreeCredits",
                 columns: table => new
                 {
@@ -59,6 +76,36 @@ namespace WebApplication2.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DegreeCredits", x => x.DegreeCreditID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DegreePlans",
+                columns: table => new
+                {
+                    DegreePlanID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DegreePlanAbbrev = table.Column<string>(nullable: true),
+                    DegreePlanName = table.Column<string>(nullable: true),
+                    StudentID = table.Column<int>(nullable: false),
+                    DegreeID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DegreePlans", x => x.DegreePlanID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Degrees",
+                columns: table => new
+                {
+                    DegreeID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DegreeAbrrev = table.Column<string>(nullable: true),
+                    DegreeName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Degrees", x => x.DegreeID);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,6 +122,22 @@ namespace WebApplication2.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Slots", x => x.SlotID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Students",
+                columns: table => new
+                {
+                    StudentID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FamilyName = table.Column<string>(nullable: true),
+                    GivenName = table.Column<string>(nullable: true),
+                    Snumber = table.Column<int>(nullable: false),
+                    Num919 = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Students", x => x.StudentID);
                 });
 
             migrationBuilder.CreateTable(
@@ -199,112 +262,6 @@ namespace WebApplication2.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Credits",
-                columns: table => new
-                {
-                    CreditID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreditAbrrev = table.Column<string>(nullable: true),
-                    CreditName = table.Column<string>(nullable: true),
-                    isSummer = table.Column<int>(nullable: false),
-                    isSpring = table.Column<int>(nullable: false),
-                    isFall = table.Column<int>(nullable: false),
-                    DegreeCreditID = table.Column<int>(nullable: true),
-                    SlotID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Credits", x => x.CreditID);
-                    table.ForeignKey(
-                        name: "FK_Credits_DegreeCredits_DegreeCreditID",
-                        column: x => x.DegreeCreditID,
-                        principalTable: "DegreeCredits",
-                        principalColumn: "DegreeCreditID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Credits_Slots_SlotID",
-                        column: x => x.SlotID,
-                        principalTable: "Slots",
-                        principalColumn: "SlotID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DegreePlans",
-                columns: table => new
-                {
-                    DegreePlanID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DegreePlanAbbrev = table.Column<string>(nullable: true),
-                    DegreePlanName = table.Column<string>(nullable: true),
-                    StudentID = table.Column<int>(nullable: false),
-                    DegreeID = table.Column<int>(nullable: false),
-                    SlotID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DegreePlans", x => x.DegreePlanID);
-                    table.ForeignKey(
-                        name: "FK_DegreePlans_Slots_SlotID",
-                        column: x => x.SlotID,
-                        principalTable: "Slots",
-                        principalColumn: "SlotID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Degrees",
-                columns: table => new
-                {
-                    DegreeID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DegreeAbrrev = table.Column<string>(nullable: true),
-                    DegreeName = table.Column<string>(nullable: true),
-                    NoOfTerms = table.Column<int>(nullable: false),
-                    DegreePlanID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Degrees", x => x.DegreeID);
-                    table.ForeignKey(
-                        name: "FK_Degrees_DegreePlans_DegreePlanID",
-                        column: x => x.DegreePlanID,
-                        principalTable: "DegreePlans",
-                        principalColumn: "DegreePlanID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Students",
-                columns: table => new
-                {
-                    StudentID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FamilyName = table.Column<string>(nullable: true),
-                    GivenName = table.Column<string>(nullable: true),
-                    Snumber = table.Column<int>(nullable: false),
-                    Num919 = table.Column<int>(nullable: false),
-                    DegreePlanID = table.Column<int>(nullable: true),
-                    StudentTermID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Students", x => x.StudentID);
-                    table.ForeignKey(
-                        name: "FK_Students_DegreePlans_DegreePlanID",
-                        column: x => x.DegreePlanID,
-                        principalTable: "DegreePlans",
-                        principalColumn: "DegreePlanID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Students_StudentTerms_StudentTermID",
-                        column: x => x.StudentTermID,
-                        principalTable: "StudentTerms",
-                        principalColumn: "StudentTermID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -343,36 +300,6 @@ namespace WebApplication2.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Credits_DegreeCreditID",
-                table: "Credits",
-                column: "DegreeCreditID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Credits_SlotID",
-                table: "Credits",
-                column: "SlotID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DegreePlans_SlotID",
-                table: "DegreePlans",
-                column: "SlotID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Degrees_DegreePlanID",
-                table: "Degrees",
-                column: "DegreePlanID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Students_DegreePlanID",
-                table: "Students",
-                column: "DegreePlanID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Students_StudentTermID",
-                table: "Students",
-                column: "StudentTermID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -396,28 +323,28 @@ namespace WebApplication2.Migrations
                 name: "Credits");
 
             migrationBuilder.DropTable(
-                name: "Degrees");
-
-            migrationBuilder.DropTable(
-                name: "Students");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "DegreeCredits");
 
             migrationBuilder.DropTable(
                 name: "DegreePlans");
 
             migrationBuilder.DropTable(
-                name: "StudentTerms");
+                name: "Degrees");
 
             migrationBuilder.DropTable(
                 name: "Slots");
+
+            migrationBuilder.DropTable(
+                name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "StudentTerms");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }
