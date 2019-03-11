@@ -1,0 +1,48 @@
+﻿@model WebApplication2.Models.Credit
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Credit</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreditAbrrev)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreditAbrrev)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreditName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreditName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.isSummer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.isSummer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.isSpring)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.isSpring)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.isFall)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.isFall)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CreditId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

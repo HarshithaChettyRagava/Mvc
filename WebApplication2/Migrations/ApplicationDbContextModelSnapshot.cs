@@ -186,9 +186,7 @@ namespace WebApplication2.Migrations
 
             modelBuilder.Entity("WebApplication2.Models.Credit", b =>
                 {
-                    b.Property<int>("CreditId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("CreditId");
 
                     b.Property<string>("CreditAbrrev");
 
@@ -207,9 +205,7 @@ namespace WebApplication2.Migrations
 
             modelBuilder.Entity("WebApplication2.Models.Degree", b =>
                 {
-                    b.Property<int>("DegreeId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("DegreeId");
 
                     b.Property<string>("DegreeAbrrev");
 
@@ -222,9 +218,7 @@ namespace WebApplication2.Migrations
 
             modelBuilder.Entity("WebApplication2.Models.DegreeCredit", b =>
                 {
-                    b.Property<int>("DegreeCreditId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("DegreeCreditId");
 
                     b.Property<int>("CreditId");
 
@@ -237,9 +231,7 @@ namespace WebApplication2.Migrations
 
             modelBuilder.Entity("WebApplication2.Models.DegreePlan", b =>
                 {
-                    b.Property<int>("DegreePlanId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("DegreePlanId");
 
                     b.Property<int>("DegreeId");
 
@@ -256,9 +248,7 @@ namespace WebApplication2.Migrations
 
             modelBuilder.Entity("WebApplication2.Models.Slot", b =>
                 {
-                    b.Property<int>("SlotId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("SlotId");
 
                     b.Property<int>("CreditId");
 
@@ -275,9 +265,7 @@ namespace WebApplication2.Migrations
 
             modelBuilder.Entity("WebApplication2.Models.Student", b =>
                 {
-                    b.Property<int>("StudentId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("StudentId");
 
                     b.Property<string>("FamilyName");
 
@@ -294,9 +282,7 @@ namespace WebApplication2.Migrations
 
             modelBuilder.Entity("WebApplication2.Models.StudentTerm", b =>
                 {
-                    b.Property<int>("StudentTermId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("StudentTermId");
 
                     b.Property<int>("StudentId");
 

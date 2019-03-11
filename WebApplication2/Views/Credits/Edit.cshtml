@@ -1,0 +1,54 @@
+﻿@model WebApplication2.Models.Credit
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Credit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CreditId" />
+            <div class="form-group">
+                <label asp-for="CreditAbrrev" class="control-label"></label>
+                <input asp-for="CreditAbrrev" class="form-control" />
+                <span asp-validation-for="CreditAbrrev" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditName" class="control-label"></label>
+                <input asp-for="CreditName" class="form-control" />
+                <span asp-validation-for="CreditName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="isSummer" class="control-label"></label>
+                <input asp-for="isSummer" class="form-control" />
+                <span asp-validation-for="isSummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="isSpring" class="control-label"></label>
+                <input asp-for="isSpring" class="form-control" />
+                <span asp-validation-for="isSpring" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="isFall" class="control-label"></label>
+                <input asp-for="isFall" class="form-control" />
+                <span asp-validation-for="isFall" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
