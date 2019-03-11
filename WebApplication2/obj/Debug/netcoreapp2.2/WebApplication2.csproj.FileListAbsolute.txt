@@ -213,3 +213,28 @@ C:\Users\S533573\Documents\44663\New folder\Mvc\WebApplication2\obj\Debug\netcor
 C:\Users\S533573\Documents\44663\New folder\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Students\Details.g.cshtml.cs
 C:\Users\S533573\Documents\44663\New folder\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Students\Edit.g.cshtml.cs
 C:\Users\S533573\Documents\44663\New folder\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Students\Index.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreeCredits\Create.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreeCredits\Delete.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreeCredits\Details.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreeCredits\Edit.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreeCredits\Index.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreePlans\Create.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreePlans\Delete.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreePlans\Details.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreePlans\Edit.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\DegreePlans\Index.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Slots\Create.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Slots\Delete.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Slots\Details.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Slots\Edit.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Slots\Index.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Students\Create.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Students\Delete.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Students\Details.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Students\Edit.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\Students\Index.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\StudentTerms\Create.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\StudentTerms\Delete.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\StudentTerms\Details.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\StudentTerms\Edit.g.cshtml.cs
+C:\Users\S533569\Harshitha_Chetty_Ragava\44663\Mvc\WebApplication2\obj\Debug\netcoreapp2.2\Razor\Views\StudentTerms\Index.g.cshtml.cs
