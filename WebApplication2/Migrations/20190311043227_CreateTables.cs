@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication2.Migrations
 {
-    public partial class CreateModel : Migration
+    public partial class CreateTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,7 +51,7 @@ namespace WebApplication2.Migrations
                 name: "Credits",
                 columns: table => new
                 {
-                    CreditID = table.Column<int>(nullable: false)
+                    CreditId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreditAbrrev = table.Column<string>(nullable: true),
                     CreditName = table.Column<string>(nullable: true),
@@ -61,74 +61,74 @@ namespace WebApplication2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Credits", x => x.CreditID);
+                    table.PrimaryKey("PK_Credits", x => x.CreditId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "DegreeCredits",
                 columns: table => new
                 {
-                    DegreeCreditID = table.Column<int>(nullable: false)
+                    DegreeCreditId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DegreeID = table.Column<int>(nullable: false),
-                    CreditID = table.Column<int>(nullable: false)
+                    DegreeId = table.Column<int>(nullable: false),
+                    CreditId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DegreeCredits", x => x.DegreeCreditID);
+                    table.PrimaryKey("PK_DegreeCredits", x => x.DegreeCreditId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "DegreePlans",
                 columns: table => new
                 {
-                    DegreePlanID = table.Column<int>(nullable: false)
+                    DegreePlanId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DegreePlanAbbrev = table.Column<string>(nullable: true),
                     DegreePlanName = table.Column<string>(nullable: true),
-                    StudentID = table.Column<int>(nullable: false),
-                    DegreeID = table.Column<int>(nullable: false)
+                    StudentId = table.Column<int>(nullable: false),
+                    DegreeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DegreePlans", x => x.DegreePlanID);
+                    table.PrimaryKey("PK_DegreePlans", x => x.DegreePlanId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Degrees",
                 columns: table => new
                 {
-                    DegreeID = table.Column<int>(nullable: false)
+                    DegreeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DegreeAbrrev = table.Column<string>(nullable: true),
                     DegreeName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Degrees", x => x.DegreeID);
+                    table.PrimaryKey("PK_Degrees", x => x.DegreeId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Slots",
                 columns: table => new
                 {
-                    SlotID = table.Column<int>(nullable: false)
+                    SlotId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Term = table.Column<int>(nullable: false),
                     Status = table.Column<string>(nullable: true),
-                    DegreePlanID = table.Column<int>(nullable: false),
-                    CreditID = table.Column<int>(nullable: false)
+                    DegreePlanId = table.Column<int>(nullable: false),
+                    CreditId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Slots", x => x.SlotID);
+                    table.PrimaryKey("PK_Slots", x => x.SlotId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Students",
                 columns: table => new
                 {
-                    StudentID = table.Column<int>(nullable: false)
+                    StudentId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FamilyName = table.Column<string>(nullable: true),
                     GivenName = table.Column<string>(nullable: true),
@@ -137,23 +137,23 @@ namespace WebApplication2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.StudentID);
+                    table.PrimaryKey("PK_Students", x => x.StudentId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "StudentTerms",
                 columns: table => new
                 {
-                    StudentTermID = table.Column<int>(nullable: false)
+                    StudentTermId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     StudentTermNo = table.Column<int>(nullable: false),
                     TermAbbrev = table.Column<string>(nullable: true),
                     TermName = table.Column<string>(nullable: true),
-                    StudentID = table.Column<int>(nullable: false)
+                    StudentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentTerms", x => x.StudentTermID);
+                    table.PrimaryKey("PK_StudentTerms", x => x.StudentTermId);
                 });
 
             migrationBuilder.CreateTable(

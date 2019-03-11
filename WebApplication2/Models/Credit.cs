@@ -7,7 +7,7 @@ namespace WebApplication2.Models
 {
     public class Credit
     {
-        public int CreditID { get; set; }
+        public int CreditId { get; set; }
         public string CreditAbrrev { get; set; }
         public string CreditName { get; set; }
         public int isSummer { get; set; }
