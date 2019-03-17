@@ -14,5 +14,7 @@ namespace WebApplication2.Models
         public string GivenName { get; set; }
         public int Snumber { get; set; }
         public int Num919 { get; set; }
+
+        public ICollection<Student> Students { get; set; }
     }
 }

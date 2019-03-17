@@ -16,9 +16,9 @@ namespace WebApplication2.Data
 
         public DbSet<Degree> Degrees { get; set; }
         public DbSet<Credit> Credits { get; set; }
+        public DbSet<Student> Students { get; set; }
         public DbSet<DegreeCredit> DegreeCredits { get; set; }
         public DbSet<DegreePlan> DegreePlans { get; set; }
-        public DbSet<Student> Students { get; set; }
         public DbSet<Slot> Slots { get; set; }
         public DbSet<StudentTerm> StudentTerms { get; set; }
 

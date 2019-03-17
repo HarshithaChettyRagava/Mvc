@@ -15,5 +15,7 @@ namespace WebApplication2.Models
         public int isSummer { get; set; }
         public int isSpring { get; set; }
         public int isFall { get; set; }
+
+        public ICollection<Credit> Credits { get; set; }
     }
 }

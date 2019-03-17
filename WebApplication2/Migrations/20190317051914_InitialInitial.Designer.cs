@@ -10,8 +10,8 @@ using WebApplication2.Data;
 namespace WebApplication2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190311201501_InitModels")]
-    partial class InitModels
+    [Migration("20190317051914_InitialInitial")]
+    partial class InitialInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -192,6 +192,8 @@ namespace WebApplication2.Migrations
 
                     b.Property<string>("CreditAbrrev");
 
+                    b.Property<int?>("CreditId1");
+
                     b.Property<string>("CreditName");
 
                     b.Property<int>("isFall");
@@ -202,6 +204,8 @@ namespace WebApplication2.Migrations
 
                     b.HasKey("CreditId");
 
+                    b.HasIndex("CreditId1");
+
                     b.ToTable("Credits");
                 });
 
@@ -209,7 +213,8 @@ namespace WebApplication2.Migrations
                 {
                     b.Property<int>("DegreeId");
 
-                    b.Property<string>("DegreeAbrrev");
+                    b.Property<string>("DegreeAbrrev")
+                        .HasMaxLength(2147483647);
 
                     b.Property<string>("DegreeName");
 
@@ -228,6 +233,10 @@ namespace WebApplication2.Migrations
 
                     b.HasKey("DegreeCreditId");
 
+                    b.HasIndex("CreditId");
+
+                    b.HasIndex("DegreeId");
+
                     b.ToTable("DegreeCredits");
                 });
 
@@ -239,11 +248,19 @@ namespace WebApplication2.Migrations
 
                     b.Property<string>("DegreePlanAbbrev");
 
+                    b.Property<int?>("DegreePlanId1");
+
                     b.Property<string>("DegreePlanName");
 
                     b.Property<int>("StudentId");
 
                     b.HasKey("DegreePlanId");
+
+                    b.HasIndex("DegreeId");
+
+                    b.HasIndex("DegreePlanId1");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("DegreePlans");
                 });
@@ -262,6 +279,10 @@ namespace WebApplication2.Migrations
 
                     b.HasKey("SlotId");
 
+                    b.HasIndex("CreditId");
+
+                    b.HasIndex("DegreePlanId");
+
                     b.ToTable("Slots");
                 });
 
@@ -277,7 +298,11 @@ namespace WebApplication2.Migrations
 
                     b.Property<int>("Snumber");
 
+                    b.Property<int?>("StudentId1");
+
                     b.HasKey("StudentId");
+
+                    b.HasIndex("StudentId1");
 
                     b.ToTable("Students");
                 });
@@ -295,6 +320,8 @@ namespace WebApplication2.Migrations
                     b.Property<string>("TermName");
 
                     b.HasKey("StudentTermId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("StudentTerms");
                 });
@@ -341,6 +368,71 @@ namespace WebApplication2.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebApplication2.Models.Credit", b =>
+                {
+                    b.HasOne("WebApplication2.Models.Credit")
+                        .WithMany("Credits")
+                        .HasForeignKey("CreditId1");
+                });
+
+            modelBuilder.Entity("WebApplication2.Models.DegreeCredit", b =>
+                {
+                    b.HasOne("WebApplication2.Models.Credit", "Credit")
+                        .WithMany()
+                        .HasForeignKey("CreditId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("WebApplication2.Models.Degree", "Degree")
+                        .WithMany()
+                        .HasForeignKey("DegreeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebApplication2.Models.DegreePlan", b =>
+                {
+                    b.HasOne("WebApplication2.Models.Degree", "Degree")
+                        .WithMany()
+                        .HasForeignKey("DegreeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("WebApplication2.Models.DegreePlan")
+                        .WithMany("DegreePlans")
+                        .HasForeignKey("DegreePlanId1");
+
+                    b.HasOne("WebApplication2.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebApplication2.Models.Slot", b =>
+                {
+                    b.HasOne("WebApplication2.Models.Credit", "Credit")
+                        .WithMany()
+                        .HasForeignKey("CreditId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("WebApplication2.Models.DegreePlan", "DegreePlan")
+                        .WithMany()
+                        .HasForeignKey("DegreePlanId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebApplication2.Models.Student", b =>
+                {
+                    b.HasOne("WebApplication2.Models.Student")
+                        .WithMany("Students")
+                        .HasForeignKey("StudentId1");
+                });
+
+            modelBuilder.Entity("WebApplication2.Models.StudentTerm", b =>
+                {
+                    b.HasOne("WebApplication2.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

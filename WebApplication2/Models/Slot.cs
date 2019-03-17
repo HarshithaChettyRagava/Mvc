@@ -10,11 +10,12 @@ namespace WebApplication2.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int SlotId { get; set; }
-        public int Term { get; set; }
-        public string Status { get; set; }
         public int DegreePlanId { get; set; }
+        public int Term { get; set; }
         public int CreditId { get; set; }
-        //public ICollection<DegreePlan> DegreePlans { get; set; }
-        //public ICollection<Credit> Credits { get; set; }
+        public string Status { get; set; }
+
+        public DegreePlan DegreePlan { get; set; }
+        public Credit Credit { get; set; }
     }
 }
