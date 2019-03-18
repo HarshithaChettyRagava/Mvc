@@ -22,7 +22,8 @@ namespace WebApplication2.Controllers
         // GET: Slots
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Slots.ToListAsync());
+            var applicationDbContext = _context.Slots.Include(s => s.Credit).Include(s => s.DegreePlan);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Slots/Details/5
@@ -34,6 +35,8 @@ namespace WebApplication2.Controllers
             }
 
             var slot = await _context.Slots
+                .Include(s => s.Credit)
+                .Include(s => s.DegreePlan)
                 .FirstOrDefaultAsync(m => m.SlotId == id);
             if (slot == null)
             {
@@ -46,6 +49,8 @@ namespace WebApplication2.Controllers
         // GET: Slots/Create
         public IActionResult Create()
         {
+            ViewData["CreditId"] = new SelectList(_context.Credits, "CreditId", "CreditId");
+            ViewData["DegreePlanId"] = new SelectList(_context.DegreePlans, "DegreePlanId", "DegreePlanId");
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace WebApplication2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SlotId,Term,Status,DegreePlanId,CreditId")] Slot slot)
+        public async Task<IActionResult> Create([Bind("SlotId,DegreePlanId,Term,CreditId,Status")] Slot slot)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +67,8 @@ namespace WebApplication2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CreditId"] = new SelectList(_context.Credits, "CreditId", "CreditId", slot.CreditId);
+            ViewData["DegreePlanId"] = new SelectList(_context.DegreePlans, "DegreePlanId", "DegreePlanId", slot.DegreePlanId);
             return View(slot);
         }
 
@@ -78,6 +85,8 @@ namespace WebApplication2.Controllers
             {
                 return NotFound();
             }
+            ViewData["CreditId"] = new SelectList(_context.Credits, "CreditId", "CreditId", slot.CreditId);
+            ViewData["DegreePlanId"] = new SelectList(_context.DegreePlans, "DegreePlanId", "DegreePlanId", slot.DegreePlanId);
             return View(slot);
         }
 
@@ -86,7 +95,7 @@ namespace WebApplication2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SlotId,Term,Status,DegreePlanId,CreditId")] Slot slot)
+        public async Task<IActionResult> Edit(int id, [Bind("SlotId,DegreePlanId,Term,CreditId,Status")] Slot slot)
         {
             if (id != slot.SlotId)
             {
@@ -113,6 +122,8 @@ namespace WebApplication2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CreditId"] = new SelectList(_context.Credits, "CreditId", "CreditId", slot.CreditId);
+            ViewData["DegreePlanId"] = new SelectList(_context.DegreePlans, "DegreePlanId", "DegreePlanId", slot.DegreePlanId);
             return View(slot);
         }
 
@@ -125,6 +136,8 @@ namespace WebApplication2.Controllers
             }
 
             var slot = await _context.Slots
+                .Include(s => s.Credit)
+                .Include(s => s.DegreePlan)
                 .FirstOrDefaultAsync(m => m.SlotId == id);
             if (slot == null)
             {

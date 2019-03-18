@@ -22,7 +22,8 @@ namespace WebApplication2.Controllers
         // GET: StudentTerms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.StudentTerms.ToListAsync());
+            var applicationDbContext = _context.StudentTerms.Include(s => s.Student);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: StudentTerms/Details/5
@@ -34,6 +35,7 @@ namespace WebApplication2.Controllers
             }
 
             var studentTerm = await _context.StudentTerms
+                .Include(s => s.Student)
                 .FirstOrDefaultAsync(m => m.StudentTermId == id);
             if (studentTerm == null)
             {
@@ -46,6 +48,7 @@ namespace WebApplication2.Controllers
         // GET: StudentTerms/Create
         public IActionResult Create()
         {
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace WebApplication2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentTermId,StudentTermNo,TermAbbrev,TermName,StudentId")] StudentTerm studentTerm)
+        public async Task<IActionResult> Create([Bind("StudentTermId,StudentId,StudentTermNo,TermAbbrev,TermName")] StudentTerm studentTerm)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace WebApplication2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId", studentTerm.StudentId);
             return View(studentTerm);
         }
 
@@ -78,6 +82,7 @@ namespace WebApplication2.Controllers
             {
                 return NotFound();
             }
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId", studentTerm.StudentId);
             return View(studentTerm);
         }
 
@@ -86,7 +91,7 @@ namespace WebApplication2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StudentTermId,StudentTermNo,TermAbbrev,TermName,StudentId")] StudentTerm studentTerm)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentTermId,StudentId,StudentTermNo,TermAbbrev,TermName")] StudentTerm studentTerm)
         {
             if (id != studentTerm.StudentTermId)
             {
@@ -113,6 +118,7 @@ namespace WebApplication2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId", studentTerm.StudentId);
             return View(studentTerm);
         }
 
@@ -125,6 +131,7 @@ namespace WebApplication2.Controllers
             }
 
             var studentTerm = await _context.StudentTerms
+                .Include(s => s.Student)
                 .FirstOrDefaultAsync(m => m.StudentTermId == id);
             if (studentTerm == null)
             {
