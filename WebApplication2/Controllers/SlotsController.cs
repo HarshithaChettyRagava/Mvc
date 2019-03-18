@@ -20,10 +20,37 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Slots
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder)
         {
-            var applicationDbContext = _context.Slots.Include(s => s.Credit).Include(s => s.DegreePlan);
-            return View(await applicationDbContext.ToListAsync());
+            ViewData["SlotId"] = String.IsNullOrEmpty(sortOrder) ? "SlotId" : "";
+            ViewData["DegreePlanId"] = sortOrder == "DegreePlanId" ? "DegreePlanId" : "SlotId";
+            ViewData["Term"] = sortOrder == "Term" ? "Term" : "SlotId";
+            ViewData["CreditId"] = sortOrder == "CreditId" ? "CreditId" : "SlotId";
+            ViewData["Status"] = sortOrder == "Status" ? "Status" : "Status";
+            var slots = from sl in _context.Slots
+                           select sl;
+            switch (sortOrder)
+            {
+                case "SlotId":
+                    slots = slots.OrderByDescending(sl => sl.SlotId);
+                    break;
+                case "DegreePlanId":
+                    slots = slots.OrderBy(sl => sl.DegreePlanId);
+                    break;
+                case "Term":
+                    slots = slots.OrderByDescending(sl => sl.Term);
+                    break;
+                case "CreditId":
+                    slots = slots.OrderByDescending(sl => sl.CreditId);
+                    break;
+                case "Status":
+                    slots = slots.OrderByDescending(sl => sl.Status);
+                    break;
+                default:
+                    slots = slots.OrderBy(sl => sl.DegreePlanId);
+                    break;
+            }
+            return View(await slots.AsNoTracking().ToListAsync());
         }
 
         // GET: Slots/Details/5

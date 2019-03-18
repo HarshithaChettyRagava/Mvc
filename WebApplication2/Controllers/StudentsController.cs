@@ -20,9 +20,37 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Students
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder)
         {
-            return View(await _context.Students.ToListAsync());
+            ViewData["StudentId"] = String.IsNullOrEmpty(sortOrder) ? "StudentId" : "";
+            ViewData["FamilyName"] = sortOrder == "FamilyName" ? "FamilyName" : "StudentId";
+            ViewData["GivenName"] = sortOrder == "GivenName" ? "GivenName" : "StudentId";
+            ViewData["Snumber"] = sortOrder == "Snumber" ? "Snumber" : "StudentId";
+            ViewData["Num919"] = sortOrder == "Num919" ? "Num919" : "StudentId";
+            var students = from stu in _context.Students
+                           select stu;
+            switch (sortOrder)
+            {
+                case "StudentId":
+                    students = students.OrderByDescending(stu => stu.StudentId);
+                    break;
+                case "FamilyName":
+                    students = students.OrderBy(stu => stu.FamilyName);
+                    break;
+                case "GivenName":
+                    students = students.OrderByDescending(stu => stu.GivenName);
+                    break;
+                case "Snumber":
+                    students = students.OrderByDescending(stu => stu.Snumber);
+                    break;
+                case "Num919":
+                    students = students.OrderByDescending(stu => stu.Num919);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.StudentId);
+                    break;
+            }
+            return View(await students.AsNoTracking().ToListAsync());
         }
 
         // GET: Students/Details/5
