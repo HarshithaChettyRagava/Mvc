@@ -22,8 +22,7 @@ namespace WebApplication2.Controllers
         // GET: DegreeCredits
         public async Task<IActionResult> Index(string sortOrder)
         {
-            //var applicationDbContext = _context.DegreeCredits.Include(d => d.Degree).Include(d => d.Student);
-            //return View(await applicationDbContext.ToListAsync());
+            var applicationDbContext = _context.DegreeCredits.Include(d => d.Degree).Include(d => d.Degree);
             ViewData["DegreeCreditId"] = String.IsNullOrEmpty(sortOrder) ? "DegreeCreditId" : "";
             ViewData["DegreeId"] = sortOrder == "DegreeId" ? "DegreeId" : "DegreeCreditId";
             ViewData["CreditId"] = sortOrder == "CreditId" ? "CreditId" : "DegreeCreditId";

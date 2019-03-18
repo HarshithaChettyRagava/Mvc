@@ -20,10 +20,38 @@ namespace WebApplication2.Controllers
         }
 
         // GET: StudentTerms
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder)
         {
             var applicationDbContext = _context.StudentTerms.Include(s => s.Student);
-            return View(await applicationDbContext.ToListAsync());
+            ViewData["StudentTermId"] = String.IsNullOrEmpty(sortOrder) ? "StudentTermId" : "";
+            ViewData["StudentId"] = sortOrder == "StudentId" ? "StudentId" : "StudentTermId";
+            ViewData["StudentTermNo"] = sortOrder == "StudentTermNo" ? "StudentTermNo" : "StudentTermId";
+            ViewData["TermAbbrev"] = sortOrder == "TermAbbrev" ? "TermAbbrev" : "StudentTermId";
+            ViewData["TermName"] = sortOrder == "TermName" ? "TermName" : "StudentTermId";
+            var studentTerms = from str in _context.StudentTerms
+                           select str;
+            switch (sortOrder)
+            {
+                case "StudentTermId":
+                    studentTerms = studentTerms.OrderByDescending(str => str.StudentTermId);
+                    break;
+                case "StudentId":
+                    studentTerms = studentTerms.OrderBy(str => str.StudentId);
+                    break;
+                case "StudentTermNo":
+                    studentTerms = studentTerms.OrderByDescending(str => str.StudentTermNo);
+                    break;
+                case "TermAbbrev":
+                    studentTerms = studentTerms.OrderByDescending(str => str.TermAbbrev);
+                    break;
+                case "TermName":
+                    studentTerms = studentTerms.OrderByDescending(str => str.TermName);
+                    break;
+                default:
+                    studentTerms = studentTerms.OrderBy(str => str.StudentTermId);
+                    break;
+            }
+            return View(await studentTerms.AsNoTracking().ToListAsync());
         }
 
         // GET: StudentTerms/Details/5

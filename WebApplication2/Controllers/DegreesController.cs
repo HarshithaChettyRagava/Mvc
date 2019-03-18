@@ -43,7 +43,6 @@ namespace WebApplication2.Controllers
                     break;
             }
             return View(await degrees.AsNoTracking().ToListAsync());
-           // return View(await _context.Degrees.ToListAsync());
         }
 
         // GET: Degrees/Details/5
