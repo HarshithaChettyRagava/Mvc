@@ -23,7 +23,7 @@ namespace WebApplication2.Controllers
         public async Task<IActionResult> Index(String sortOrder)
         {
             var applicationDbContext = _context.DegreeCredits.Include(d => d.Credit).Include(d => d.Degree);
-            ViewData["CreditId"] = String.IsNullOrEmpty(sortOrder) ? "CreditId" : "";
+            //ViewData["CreditId"] = String.IsNullOrEmpty(sortOrder) ? "CreditId" : "";
             ViewData["CreditAbrrev"] = sortOrder == "CreditAbrrev" ? "CreditAbrrev" : "CreditId";
             ViewData["CredirName"] = sortOrder == "CredirName" ? "CredirName" : "CreditId";
             ViewData["isSummer"] = sortOrder == "isSummer" ? "isSummer" : "CreditId";
@@ -33,9 +33,9 @@ namespace WebApplication2.Controllers
                           select c;
             switch (sortOrder)
             {
-                case "CreditId":
-                    credits = credits.OrderByDescending(c => c.CreditId);
-                    break;
+                //case "CreditId":
+                //    credits = credits.OrderByDescending(c => c.CreditId);
+                //    break;
                 case "CreditAbrrev":
                     credits = credits.OrderBy(c => c.CreditAbrrev);
                     break;
