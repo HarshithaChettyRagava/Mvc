@@ -20,9 +20,30 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Degrees
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            return View(await _context.Degrees.ToListAsync());
+            ViewData["DegreeId"] = String.IsNullOrEmpty(sortOrder) ? "DegreeId" : "";
+            ViewData["DegreeAbrrev"] = sortOrder == "DegreeAbrrev" ? "DegreeAbrrev" : "DegreeId";
+            ViewData["DegreeName"] = sortOrder == "DegreeName" ? "DegreeName" : "DegreeId";
+            var degrees = from d in _context.Degrees
+                           select d;
+            switch (sortOrder)
+            {
+                case "DegreeId":
+                    degrees = degrees.OrderByDescending(d => d.DegreeId);
+                    break;
+                case "DegreeAbrrev":
+                    degrees = degrees.OrderBy(d => d.DegreeAbrrev);
+                    break;
+                case "DegreeName":
+                    degrees = degrees.OrderByDescending(d => d.DegreeName);
+                    break;
+                default:
+                    degrees = degrees.OrderBy(d => d.DegreeId);
+                    break;
+            }
+            return View(await degrees.AsNoTracking().ToListAsync());
+           // return View(await _context.Degrees.ToListAsync());
         }
 
         // GET: Degrees/Details/5
