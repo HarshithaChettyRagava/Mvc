@@ -12,20 +12,20 @@
 <table class="table">
     <thead>
         <tr>
-            @*<th>
+            <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["CreditId"]">@Html.DisplayNameFor(model => model.CreditId)</a>
-            </th>*@
+            </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["CreditAbrrev"]">@Html.DisplayNameFor(model => model.CreditAbrrev)</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["CreditName"]">@Html.DisplayNameFor(model => model.CreditName)</a> 
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["CreditName"]">@Html.DisplayNameFor(model => model.CreditName)</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["isSummer"]">@Html.DisplayNameFor(model => model.isSummer)</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["isSpring"]">@Html.DisplayNameFor(model => model.isSpring)</a>    
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["isSpring"]">@Html.DisplayNameFor(model => model.isSpring)</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["isFall"]">@Html.DisplayNameFor(model => model.isFall)</a>

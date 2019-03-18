@@ -20,44 +20,11 @@ namespace WebApplication2.Controllers
         }
 
         // GET: DegreeCredits
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.DegreeCredits.Include(d => d.Credit).Include(d => d.Degree);
-            //ViewData["CreditId"] = String.IsNullOrEmpty(sortOrder) ? "CreditId" : "";
-            ViewData["CreditAbrrev"] = sortOrder == "CreditAbrrev" ? "CreditAbrrev" : "CreditId";
-            ViewData["CredirName"] = sortOrder == "CredirName" ? "CredirName" : "CreditId";
-            ViewData["isSummer"] = sortOrder == "isSummer" ? "isSummer" : "CreditId";
-            ViewData["isSpring"] = sortOrder == "isSpring" ? "isSpring" : "CreditId";
-            ViewData["isFall"] = sortOrder == "isFall" ? "isFall" : "CreditId";
-            var credits = from c in _context.Credits
-                          select c;
-            switch (sortOrder)
-            {
-                //case "CreditId":
-                //    credits = credits.OrderByDescending(c => c.CreditId);
-                //    break;
-                case "CreditAbrrev":
-                    credits = credits.OrderBy(c => c.CreditAbrrev);
-                    break;
-                case "CreditName":
-                    credits = credits.OrderByDescending(c => c.CreditName);
-                    break;
-                case "isSummer":
-                    credits = credits.OrderByDescending(c => c.isSummer);
-                    break;
-                case "isSpring":
-                    credits = credits.OrderByDescending(c => c.isSpring);
-                    break;
-                case "isFall":
-                    credits = credits.OrderByDescending(c => c.isFall);
-                    break;
-
-                default:
-                    credits = credits.OrderByDescending(c => c.CreditId);
-                    break;
-            }
-            return View(await credits.AsNoTracking().ToListAsync());
+            //var applicationDbContext = _context.DegreeCredits.Include(d => d.Degree).Include(d => d.Student);
             //return View(await applicationDbContext.ToListAsync());
+            return null;
         }
 
         // GET: DegreeCredits/Details/5
