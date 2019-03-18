@@ -20,10 +20,37 @@ namespace WebApplication2.Controllers
         }
 
         // GET: DegreePlans
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            var applicationDbContext = _context.DegreePlans.Include(d => d.Degree).Include(d => d.Student);
-            return View(await applicationDbContext.ToListAsync());
+            ViewData["DegreePlanId"] = String.IsNullOrEmpty(sortOrder) ? "DegreePlanId" : "";
+            ViewData["StudentId"] = sortOrder == "StudentId" ? "StudentId" : "DegreePlanId";
+            ViewData["DegreePlanAbbrev"] = sortOrder == "DegreePlanAbbrev" ? "DegreePlanAbbrev" : "DegreePlanId";
+            ViewData["DegreePlanName"] = sortOrder == "DegreePlanName" ? "DegreePlanName" : "DegreePlanId";
+            ViewData["DegreeId"] = sortOrder == "DegreeId" ? "DegreeId" : "DegreePlanId";
+            var degreePlans = from dp in _context.DegreePlans
+                           select dp;
+            switch (sortOrder)
+            {
+                case "DegreePlanId":
+                    degreePlans = degreePlans.OrderByDescending(dp => dp.DegreePlanId);
+                    break;
+                case "StudentId":
+                    degreePlans = degreePlans.OrderBy(dp => dp.StudentId);
+                    break;
+                case "DegreePlanAbbrev":
+                    degreePlans = degreePlans.OrderByDescending(dp => dp.DegreePlanAbbrev);
+                    break;
+                case "DegreePlanName":
+                    degreePlans = degreePlans.OrderByDescending(dp => dp.DegreePlanName);
+                    break;
+                case "DegreeId":
+                    degreePlans = degreePlans.OrderByDescending(dp => dp.DegreeId);
+                    break;
+                default:
+                    degreePlans = degreePlans.OrderByDescending(dp => dp.DegreePlanId);
+                    break;
+            }
+            return View(await degreePlans.AsNoTracking().ToListAsync());
         }
 
         // GET: DegreePlans/Details/5
