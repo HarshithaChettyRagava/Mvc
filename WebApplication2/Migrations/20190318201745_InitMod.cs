@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication2.Migrations
 {
-    public partial class InitialInitial : Migration
+    public partial class InitMod : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,8 +52,8 @@ namespace WebApplication2.Migrations
                 columns: table => new
                 {
                     CreditId = table.Column<int>(nullable: false),
-                    CreditAbrrev = table.Column<string>(nullable: true),
-                    CreditName = table.Column<string>(nullable: true),
+                    CreditAbrrev = table.Column<string>(maxLength: 40, nullable: true),
+                    CreditName = table.Column<string>(maxLength: 40, nullable: true),
                     isSummer = table.Column<int>(nullable: false),
                     isSpring = table.Column<int>(nullable: false),
                     isFall = table.Column<int>(nullable: false),
@@ -75,12 +75,19 @@ namespace WebApplication2.Migrations
                 columns: table => new
                 {
                     DegreeId = table.Column<int>(nullable: false),
-                    DegreeAbrrev = table.Column<string>(maxLength: 2147483647, nullable: true),
-                    DegreeName = table.Column<string>(nullable: true)
+                    DegreeAbrrev = table.Column<string>(maxLength: 40, nullable: true),
+                    DegreeName = table.Column<string>(maxLength: 40, nullable: true),
+                    DegreeId1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Degrees", x => x.DegreeId);
+                    table.ForeignKey(
+                        name: "FK_Degrees_Degrees_DegreeId1",
+                        column: x => x.DegreeId1,
+                        principalTable: "Degrees",
+                        principalColumn: "DegreeId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -88,8 +95,8 @@ namespace WebApplication2.Migrations
                 columns: table => new
                 {
                     StudentId = table.Column<int>(nullable: false),
-                    FamilyName = table.Column<string>(nullable: true),
-                    GivenName = table.Column<string>(nullable: true),
+                    FamilyName = table.Column<string>(maxLength: 35, nullable: true),
+                    GivenName = table.Column<string>(maxLength: 35, nullable: true),
                     Snumber = table.Column<int>(nullable: false),
                     Num919 = table.Column<int>(nullable: false),
                     StudentId1 = table.Column<int>(nullable: true)
@@ -242,8 +249,8 @@ namespace WebApplication2.Migrations
                 {
                     DegreePlanId = table.Column<int>(nullable: false),
                     StudentId = table.Column<int>(nullable: false),
-                    DegreePlanAbbrev = table.Column<string>(nullable: true),
-                    DegreePlanName = table.Column<string>(nullable: true),
+                    DegreePlanAbbrev = table.Column<string>(maxLength: 50, nullable: true),
+                    DegreePlanName = table.Column<string>(maxLength: 50, nullable: true),
                     DegreeId = table.Column<int>(nullable: false),
                     DegreePlanId1 = table.Column<int>(nullable: true)
                 },
@@ -277,8 +284,8 @@ namespace WebApplication2.Migrations
                     StudentTermId = table.Column<int>(nullable: false),
                     StudentId = table.Column<int>(nullable: false),
                     StudentTermNo = table.Column<int>(nullable: false),
-                    TermAbbrev = table.Column<string>(nullable: true),
-                    TermName = table.Column<string>(nullable: true)
+                    TermAbbrev = table.Column<string>(maxLength: 20, nullable: true),
+                    TermName = table.Column<string>(maxLength: 35, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -299,7 +306,7 @@ namespace WebApplication2.Migrations
                     DegreePlanId = table.Column<int>(nullable: false),
                     Term = table.Column<int>(nullable: false),
                     CreditId = table.Column<int>(nullable: false),
-                    Status = table.Column<string>(nullable: true)
+                    Status = table.Column<string>(maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -386,6 +393,11 @@ namespace WebApplication2.Migrations
                 name: "IX_DegreePlans_StudentId",
                 table: "DegreePlans",
                 column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Degrees_DegreeId1",
+                table: "Degrees",
+                column: "DegreeId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Slots_CreditId",

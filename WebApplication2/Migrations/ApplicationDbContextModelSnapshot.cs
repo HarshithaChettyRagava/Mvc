@@ -188,11 +188,13 @@ namespace WebApplication2.Migrations
                 {
                     b.Property<int>("CreditId");
 
-                    b.Property<string>("CreditAbrrev");
+                    b.Property<string>("CreditAbrrev")
+                        .HasMaxLength(40);
 
                     b.Property<int?>("CreditId1");
 
-                    b.Property<string>("CreditName");
+                    b.Property<string>("CreditName")
+                        .HasMaxLength(40);
 
                     b.Property<int>("isFall");
 
@@ -212,11 +214,16 @@ namespace WebApplication2.Migrations
                     b.Property<int>("DegreeId");
 
                     b.Property<string>("DegreeAbrrev")
-                        .HasMaxLength(2147483647);
+                        .HasMaxLength(40);
 
-                    b.Property<string>("DegreeName");
+                    b.Property<int?>("DegreeId1");
+
+                    b.Property<string>("DegreeName")
+                        .HasMaxLength(40);
 
                     b.HasKey("DegreeId");
+
+                    b.HasIndex("DegreeId1");
 
                     b.ToTable("Degrees");
                 });
@@ -244,11 +251,13 @@ namespace WebApplication2.Migrations
 
                     b.Property<int>("DegreeId");
 
-                    b.Property<string>("DegreePlanAbbrev");
+                    b.Property<string>("DegreePlanAbbrev")
+                        .HasMaxLength(50);
 
                     b.Property<int?>("DegreePlanId1");
 
-                    b.Property<string>("DegreePlanName");
+                    b.Property<string>("DegreePlanName")
+                        .HasMaxLength(50);
 
                     b.Property<int>("StudentId");
 
@@ -271,7 +280,8 @@ namespace WebApplication2.Migrations
 
                     b.Property<int>("DegreePlanId");
 
-                    b.Property<string>("Status");
+                    b.Property<string>("Status")
+                        .HasMaxLength(10);
 
                     b.Property<int>("Term");
 
@@ -288,9 +298,11 @@ namespace WebApplication2.Migrations
                 {
                     b.Property<int>("StudentId");
 
-                    b.Property<string>("FamilyName");
+                    b.Property<string>("FamilyName")
+                        .HasMaxLength(35);
 
-                    b.Property<string>("GivenName");
+                    b.Property<string>("GivenName")
+                        .HasMaxLength(35);
 
                     b.Property<int>("Num919");
 
@@ -313,9 +325,11 @@ namespace WebApplication2.Migrations
 
                     b.Property<int>("StudentTermNo");
 
-                    b.Property<string>("TermAbbrev");
+                    b.Property<string>("TermAbbrev")
+                        .HasMaxLength(20);
 
-                    b.Property<string>("TermName");
+                    b.Property<string>("TermName")
+                        .HasMaxLength(35);
 
                     b.HasKey("StudentTermId");
 
@@ -374,6 +388,13 @@ namespace WebApplication2.Migrations
                     b.HasOne("WebApplication2.Models.Credit")
                         .WithMany("Credits")
                         .HasForeignKey("CreditId1");
+                });
+
+            modelBuilder.Entity("WebApplication2.Models.Degree", b =>
+                {
+                    b.HasOne("WebApplication2.Models.Degree")
+                        .WithMany("Degrees")
+                        .HasForeignKey("DegreeId1");
                 });
 
             modelBuilder.Entity("WebApplication2.Models.DegreeCredit", b =>
