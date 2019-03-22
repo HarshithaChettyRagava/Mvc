@@ -22,7 +22,7 @@
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["TermName"]">@Html.DisplayNameFor(model => model.TermName)</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["StudentId"]">@Html.DisplayNameFor(model => model.StudentId)</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Student"]">@Html.DisplayNameFor(model => model.Student)</a>
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.TermName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Student.StudentId)
+                @Html.DisplayFor(modelItem => item.StudentId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.StudentTermId">Edit</a> |

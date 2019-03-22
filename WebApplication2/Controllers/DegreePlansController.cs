@@ -20,15 +20,16 @@ namespace WebApplication2.Controllers
         }
 
         // GET: DegreePlans
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index(String sortOrder)
         {
+            var applicationDbContext = _context.DegreePlans.Include(d => d.Degree).Include(d => d.Student);
             ViewData["DegreePlanId"] = String.IsNullOrEmpty(sortOrder) ? "DegreePlanId" : "";
             ViewData["StudentId"] = sortOrder == "StudentId" ? "StudentId" : "DegreePlanId";
             ViewData["DegreePlanAbbrev"] = sortOrder == "DegreePlanAbbrev" ? "DegreePlanAbbrev" : "DegreePlanId";
             ViewData["DegreePlanName"] = sortOrder == "DegreePlanName" ? "DegreePlanName" : "DegreePlanId";
             ViewData["DegreeId"] = sortOrder == "DegreeId" ? "DegreeId" : "DegreePlanId";
             var degreePlans = from dp in _context.DegreePlans
-                           select dp;
+                              select dp;
             switch (sortOrder)
             {
                 case "DegreePlanId":
@@ -51,6 +52,7 @@ namespace WebApplication2.Controllers
                     break;
             }
             return View(await degreePlans.AsNoTracking().ToListAsync());
+            //return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: DegreePlans/Details/5
