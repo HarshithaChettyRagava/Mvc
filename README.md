@@ -15,7 +15,7 @@ The App mainly focuses on developing a MVC for an University Degree Plan which i
 ## Cloning 
 On GitHub, navigate to the main page of the repository, under the repository name, click Clone or download and.
 
-##Initialize
+## Initialize
 Open Git Bash.
 Change the current working directory to your local project.
 Initialize the local directory as a Git repository.
