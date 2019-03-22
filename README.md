@@ -13,7 +13,7 @@ Designing with Data.
 The App mainly focuses on developing a MVC for an University Degree Plan which includes terms, credits, Courses, slots etc.,.
 
 ## Cloning 
-On GitHub, navigate to the main page of the repository, under the repository name, click Clone or download and.
+On GitHub, navigate to the main page of the repository, under the repository name, click Clone or download in local machine.
 
 ## Initialize
 Open Git Bash.
@@ -27,7 +27,7 @@ Click the clone from the repository and come to local repo and click .gitclone O
 ## Issues Tracking
 https://github.com/HarshithaChettyRagava/Mvc/issues
 
-## screen shots
+## Screen shots
 
 ![alt text](webApp.png)
 ![alt text](screenShots.png)
