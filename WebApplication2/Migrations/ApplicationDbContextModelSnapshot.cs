@@ -298,6 +298,8 @@ namespace WebApplication2.Migrations
                 {
                     b.Property<int>("StudentId");
 
+                    b.Property<bool>("Done");
+
                     b.Property<string>("FamilyName")
                         .HasMaxLength(35);
 

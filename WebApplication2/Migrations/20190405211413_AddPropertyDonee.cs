@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication2.Migrations
 {
-    public partial class InitMod : Migration
+    public partial class AddPropertyDonee : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -99,6 +99,7 @@ namespace WebApplication2.Migrations
                     GivenName = table.Column<string>(maxLength: 35, nullable: true),
                     Snumber = table.Column<int>(nullable: false),
                     Num919 = table.Column<int>(nullable: false),
+                    Done = table.Column<bool>(nullable: false),
                     StudentId1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

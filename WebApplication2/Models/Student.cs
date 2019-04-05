@@ -21,6 +21,8 @@ namespace WebApplication2.Models
         [Range(1,Int32.MaxValue)]
         public int Num919 { get; set; }
 
+        public bool Done { get; set; }
+
         public ICollection<Student> Students { get; set; }
     }
 }

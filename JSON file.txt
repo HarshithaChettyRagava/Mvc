@@ -1,0 +1,72 @@
+{
+  "availabilityState": "Normal",
+  "clientAffinityEnabled": true,
+  "clientCertEnabled": false,
+  "cloningInfo": null,
+  "containerSize": 0,
+  "dailyMemoryTimeQuota": 0,
+  "defaultHostName": "harshithaappname.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://honeybunny@harshithaappname.scm.azurewebsites.net/harshithaappname.git",
+  "enabled": true,
+  "enabledHostNames": [
+    "harshithaappname.azurewebsites.net",
+    "harshithaappname.scm.azurewebsites.net"
+  ],
+  "ftpPublishingUrl": "ftp://waws-prod-am2-219.ftp.azurewebsites.windows.net/site/wwwroot",
+  "hostNameSslStates": [
+    {
+      "hostType": "Standard",
+      "ipBasedSslResult": null,
+      "ipBasedSslState": "NotConfigured",
+      "name": "harshithaappname.azurewebsites.net",
+      "sslState": "Disabled",
+      "thumbprint": null,
+      "toUpdate": null,
+      "toUpdateIpBasedSsl": null,
+      "virtualIp": null
+    },
+    {
+      "hostType": "Repository",
+      "ipBasedSslResult": null,
+      "ipBasedSslState": "NotConfigured",
+      "name": "harshithaappname.scm.azurewebsites.net",
+      "sslState": "Disabled",
+      "thumbprint": null,
+      "toUpdate": null,
+      "toUpdateIpBasedSsl": null,
+      "virtualIp": null
+    }
+  ],
+  "hostNames": [
+    "harshithaappname.azurewebsites.net"
+  ],
+  "hostNamesDisabled": false,
+  "hostingEnvironmentProfile": null,
+  "httpsOnly": false,
+  "hyperV": false,
+  "id": "/subscriptions/3660c150-40af-4a27-aa8b-96b687eba10b/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/harshithaappname",
+  "identity": null,
+  "isDefaultContainer": null,
+  "isXenon": false,
+  "kind": "app",
+  "lastModifiedTimeUtc": "2019-04-05T20:31:43.800000",
+  "location": "West Europe",
+  "maxNumberOfWorkers": null,
+  "name": "harshithaappname",
+  "outboundIpAddresses": "40.114.210.78,40.114.239.62,40.114.231.39,13.80.106.127,40.114.212.109",
+  "possibleOutboundIpAddresses": "40.114.210.78,40.114.239.62,40.114.231.39,13.80.106.127,40.114.212.109,40.114.236.249,40.114.238.127,13.80.108.215",
+  "repositorySiteName": "harshithaappname",
+  "reserved": false,
+  "resourceGroup": "myResourceGroup",
+  "scmSiteAlsoStopped": false,
+  "serverFarmId": "/subscriptions/3660c150-40af-4a27-aa8b-96b687eba10b/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myAppServicePlan",
+  "siteConfig": null,
+  "slotSwapStatus": null,
+  "state": "Running",
+  "suspendedTill": null,
+  "tags": null,
+  "targetSwapSlot": null,
+  "trafficManagerHostNames": null,
+  "type": "Microsoft.Web/sites",
+  "usageState": "Normal"
+}

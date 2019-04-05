@@ -10,8 +10,8 @@ using WebApplication2.Data;
 namespace WebApplication2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190318201745_InitMod")]
-    partial class InitMod
+    [Migration("20190405211413_AddPropertyDonee")]
+    partial class AddPropertyDonee
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -299,6 +299,8 @@ namespace WebApplication2.Migrations
             modelBuilder.Entity("WebApplication2.Models.Student", b =>
                 {
                     b.Property<int>("StudentId");
+
+                    b.Property<bool>("Done");
 
                     b.Property<string>("FamilyName")
                         .HasMaxLength(35);
