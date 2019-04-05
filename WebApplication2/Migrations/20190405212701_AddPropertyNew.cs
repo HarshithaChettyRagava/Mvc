@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication2.Migrations
 {
-    public partial class AddPropertyDonee : Migration
+    public partial class AddPropertyNew : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

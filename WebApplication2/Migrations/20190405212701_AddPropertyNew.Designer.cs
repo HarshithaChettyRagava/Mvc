@@ -10,8 +10,8 @@ using WebApplication2.Data;
 namespace WebApplication2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190405211413_AddPropertyDonee")]
-    partial class AddPropertyDonee
+    [Migration("20190405212701_AddPropertyNew")]
+    partial class AddPropertyNew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
