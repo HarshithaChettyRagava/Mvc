@@ -17,6 +17,8 @@ namespace WebApplication2.Models
         [StringLength(40)]
         public string DegreeName { get; set; }
 
+        public bool Done { get; set; }
+
         public ICollection<Degree> Degrees { get; set; }
     }
 }

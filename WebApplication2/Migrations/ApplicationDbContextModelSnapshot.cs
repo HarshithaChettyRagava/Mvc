@@ -196,6 +196,8 @@ namespace WebApplication2.Migrations
                     b.Property<string>("CreditName")
                         .HasMaxLength(40);
 
+                    b.Property<bool>("Done");
+
                     b.Property<int>("isFall");
 
                     b.Property<int>("isSpring");
@@ -220,6 +222,8 @@ namespace WebApplication2.Migrations
 
                     b.Property<string>("DegreeName")
                         .HasMaxLength(40);
+
+                    b.Property<bool>("Done");
 
                     b.HasKey("DegreeId");
 

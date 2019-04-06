@@ -10,8 +10,8 @@ using WebApplication2.Data;
 namespace WebApplication2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190405212701_AddPropertyNew")]
-    partial class AddPropertyNew
+    [Migration("20190405215154_AddPropertyNw")]
+    partial class AddPropertyNw
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -198,6 +198,8 @@ namespace WebApplication2.Migrations
                     b.Property<string>("CreditName")
                         .HasMaxLength(40);
 
+                    b.Property<bool>("Done");
+
                     b.Property<int>("isFall");
 
                     b.Property<int>("isSpring");
@@ -222,6 +224,8 @@ namespace WebApplication2.Migrations
 
                     b.Property<string>("DegreeName")
                         .HasMaxLength(40);
+
+                    b.Property<bool>("Done");
 
                     b.HasKey("DegreeId");
 

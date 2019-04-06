@@ -1,3 +1,4 @@
+Local git is configured with url of 'https://honeybunny@harshithaappname.scm.azurewebsites.net/harshithaappname.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,

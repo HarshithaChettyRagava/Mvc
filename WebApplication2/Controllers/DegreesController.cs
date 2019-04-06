@@ -75,7 +75,7 @@ namespace WebApplication2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DegreeId,DegreeAbrrev,DegreeName")] Degree degree)
+        public async Task<IActionResult> Create([Bind("DegreeId,DegreeAbrrev,DegreeName,Done")] Degree degree)
         {
             if (ModelState.IsValid)
             {

@@ -88,7 +88,7 @@ namespace WebApplication2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CreditId,CreditAbrrev,CreditName,isSummer,isSpring,isFall")] Credit credit)
+        public async Task<IActionResult> Create([Bind("CreditId,CreditAbrrev,CreditName,isSummer,isSpring,isFall,Done")] Credit credit)
         {
             if (ModelState.IsValid)
             {

@@ -23,6 +23,8 @@ namespace WebApplication2.Models
         [Range(1, 10)]
         public int isFall { get; set; }
 
+        public bool Done { get; set; }
+
         public ICollection<Credit> Credits { get; set; }
     }
 }

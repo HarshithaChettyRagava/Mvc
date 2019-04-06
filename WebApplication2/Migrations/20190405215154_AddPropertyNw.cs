@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication2.Migrations
 {
-    public partial class AddPropertyNew : Migration
+    public partial class AddPropertyNw : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,6 +57,7 @@ namespace WebApplication2.Migrations
                     isSummer = table.Column<int>(nullable: false),
                     isSpring = table.Column<int>(nullable: false),
                     isFall = table.Column<int>(nullable: false),
+                    Done = table.Column<bool>(nullable: false),
                     CreditId1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -77,6 +78,7 @@ namespace WebApplication2.Migrations
                     DegreeId = table.Column<int>(nullable: false),
                     DegreeAbrrev = table.Column<string>(maxLength: 40, nullable: true),
                     DegreeName = table.Column<string>(maxLength: 40, nullable: true),
+                    Done = table.Column<bool>(nullable: false),
                     DegreeId1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
