@@ -20,15 +20,23 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Students
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, String searchString)
         {
             ViewData["StudentId"] = String.IsNullOrEmpty(sortOrder) ? "StudentId" : "";
             ViewData["FamilyName"] = sortOrder == "FamilyName" ? "FamilyName" : "StudentId";
             ViewData["GivenName"] = sortOrder == "GivenName" ? "GivenName" : "StudentId";
             ViewData["Snumber"] = sortOrder == "Snumber" ? "Snumber" : "StudentId";
             ViewData["Num919"] = sortOrder == "Num919" ? "Num919" : "StudentId";
+            ViewData["CurrentFilter"] = searchString;
+
             var students = from stu in _context.Students
                            select stu;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.FamilyName.Contains(searchString)
+                                       || s.GivenName.Contains(searchString));
+            }
             switch (sortOrder)
             {
                 case "StudentId":

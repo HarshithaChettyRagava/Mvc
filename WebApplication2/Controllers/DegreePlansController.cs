@@ -20,7 +20,7 @@ namespace WebApplication2.Controllers
         }
 
         // GET: DegreePlans
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, String searchString)
         {
             var applicationDbContext = _context.DegreePlans.Include(d => d.Degree).Include(d => d.Student);
             ViewData["DegreePlanId"] = String.IsNullOrEmpty(sortOrder) ? "DegreePlanId" : "";
@@ -28,8 +28,17 @@ namespace WebApplication2.Controllers
             ViewData["DegreePlanAbbrev"] = sortOrder == "DegreePlanAbbrev" ? "DegreePlanAbbrev" : "DegreePlanId";
             ViewData["DegreePlanName"] = sortOrder == "DegreePlanName" ? "DegreePlanName" : "DegreePlanId";
             ViewData["DegreeId"] = sortOrder == "DegreeId" ? "DegreeId" : "DegreePlanId";
+            ViewData["CurrentFilter"] = searchString;
+
             var degreePlans = from dp in _context.DegreePlans
                               select dp;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                degreePlans = degreePlans.Where(s => s.DegreePlanAbbrev.Contains(searchString) ||
+                                                       s.DegreePlanName.Contains(searchString));
+            }
+
             switch (sortOrder)
             {
                 case "DegreePlanId":

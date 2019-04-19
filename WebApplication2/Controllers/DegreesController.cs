@@ -20,13 +20,22 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Degrees
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, String searchString)
         {
             ViewData["DegreeId"] = String.IsNullOrEmpty(sortOrder) ? "DegreeId" : "";
             ViewData["DegreeAbbrev"] = sortOrder == "DegreeAbbrev" ? "DegreeAbbrev" : "DegreeId";
             ViewData["DegreeName"] = sortOrder == "DegreeName" ? "DegreeName" : "DegreeId";
+            ViewData["CurrentFilter"] = searchString;
+
             var degrees = from d in _context.Degrees
                           select d;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                degrees = degrees.Where(s => s.DegreeAbrrev.Contains(searchString)
+                                       || s.DegreeName.Contains(searchString));
+            }
+
             switch (sortOrder)
             {
                 case "DegreeId":

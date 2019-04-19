@@ -20,7 +20,7 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Credits
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, String searchString)
         {
             var applicationDbContext = _context.DegreeCredits.Include(d => d.Credit).Include(d => d.Degree);
             ViewData["CreditId"] = String.IsNullOrEmpty(sortOrder) ? "CreditId" : "";
@@ -29,8 +29,17 @@ namespace WebApplication2.Controllers
             ViewData["isSummer"] = sortOrder == "isSummer" ? "isSummer" : "CreditId";
             ViewData["isSpring"] = sortOrder == "isSpring" ? "isSpring" : "CreditId";
             ViewData["isFall"] = sortOrder == "isFall" ? "isFall" : "CreditId";
+            ViewData["CurrentFilter"] = searchString;
+            
             var credits = from c in _context.Credits
                           select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                credits = credits.Where(s => s.CreditAbrrev.Contains(searchString)
+                                       || s.CreditName.Contains(searchString));
+            }
+
             switch (sortOrder)
             {
                 case "CreditId":

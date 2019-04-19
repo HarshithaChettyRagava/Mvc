@@ -20,15 +20,24 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Slots
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, String searchString)
         {
             ViewData["SlotId"] = String.IsNullOrEmpty(sortOrder) ? "SlotId" : "";
             ViewData["DegreePlanId"] = sortOrder == "DegreePlanId" ? "DegreePlanId" : "SlotId";
             ViewData["Term"] = sortOrder == "Term" ? "Term" : "SlotId";
             ViewData["CreditId"] = sortOrder == "CreditId" ? "CreditId" : "SlotId";
             ViewData["Status"] = sortOrder == "Status" ? "Status" : "Status";
+            ViewData["CurrentFilter"] = searchString;
+
             var slots = from sl in _context.Slots
                            select sl;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                slots = slots.Where(s => s.Status.Contains(searchString));
+            }
+
+        
             switch (sortOrder)
             {
                 case "SlotId":
