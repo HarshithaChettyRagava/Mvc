@@ -10,8 +10,8 @@ using WebApplication2.Data;
 namespace WebApplication2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190419142839_update")]
-    partial class update
+    [Migration("20190419171942_Azure")]
+    partial class Azure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

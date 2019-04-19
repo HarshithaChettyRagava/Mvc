@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication2.Migrations
 {
-    public partial class update : Migration
+    public partial class Azure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
