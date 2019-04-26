@@ -4,9 +4,9 @@ Designing with Data.
 
 ## Group Members - Developers
 
-- Vamshi Krishna Nuka
-- Zaiba Ali
-- Harshitha Chetty Ragava
+* Vamshi Krishna Nuka
+* Zaiba Ali
+* Harshitha Chetty Ragava
 
 ## Getting Started
 
@@ -44,6 +44,8 @@ https://github.com/HarshithaChettyRagava/Mvc/issues
 
 ## Link
 Github - [https://github.com/HarshithaChettyRagava/Mvc]
+
+
 
 
 
