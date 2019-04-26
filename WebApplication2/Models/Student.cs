@@ -23,6 +23,6 @@ namespace WebApplication2.Models
 
         public bool Done { get; set; }
 
-        public ICollection<Student> Students { get; set; }
+        public ICollection<DegreePlan> DegreePlans { get; set; }
     }
 }

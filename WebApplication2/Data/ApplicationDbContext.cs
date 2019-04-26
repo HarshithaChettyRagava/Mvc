@@ -21,6 +21,5 @@ namespace WebApplication2.Data
         public DbSet<DegreePlan> DegreePlans { get; set; }
         public DbSet<Slot> Slots { get; set; }
         public DbSet<StudentTerm> StudentTerms { get; set; }
-
     }
 }

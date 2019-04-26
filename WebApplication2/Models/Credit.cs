@@ -25,6 +25,8 @@ namespace WebApplication2.Models
 
         public bool Done { get; set; }
 
-        public ICollection<Credit> Credits { get; set; }
+        public int DegreeId { get; set; }
+
+        public Degree degree { get; set; }
     }
 }

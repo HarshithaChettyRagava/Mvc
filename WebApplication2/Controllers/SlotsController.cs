@@ -47,7 +47,7 @@ namespace WebApplication2.Controllers
                     slots = slots.OrderBy(sl => sl.DegreePlanId);
                     break;
                 case "Term":
-                    slots = slots.OrderByDescending(sl => sl.Term);
+                    slots = slots.OrderByDescending(sl => sl.StudentTermId);
                     break;
                 case "CreditId":
                     slots = slots.OrderByDescending(sl => sl.CreditId);
@@ -72,7 +72,7 @@ namespace WebApplication2.Controllers
 
             var slot = await _context.Slots
                 .Include(s => s.Credit)
-                .Include(s => s.DegreePlan)
+                .Include(s => s.StudentTerm)
                 .FirstOrDefaultAsync(m => m.SlotId == id);
             if (slot == null)
             {
@@ -173,7 +173,7 @@ namespace WebApplication2.Controllers
 
             var slot = await _context.Slots
                 .Include(s => s.Credit)
-                .Include(s => s.DegreePlan)
+                .Include(s => s.StudentTerm)
                 .FirstOrDefaultAsync(m => m.SlotId == id);
             if (slot == null)
             {

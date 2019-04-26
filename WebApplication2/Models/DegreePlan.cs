@@ -15,14 +15,16 @@ namespace WebApplication2.Models
         [Range(1, Int32.MaxValue)]
         public int StudentId { get; set; }
         [StringLength(50)]
+        [Required]
         public string DegreePlanAbbrev { get; set; }
         [StringLength(50)]
+        [Required]
         public string DegreePlanName { get; set; }
         [Range(1, 999)]
         public int DegreeId { get; set; }
 
         public Student Student { get; set; }
         public Degree Degree { get; set; }
-        public ICollection<DegreePlan> DegreePlans { get; set; }
+        public ICollection<StudentTerm> StudentTerms { get; set; }
     }
 }

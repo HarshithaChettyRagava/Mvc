@@ -25,13 +25,13 @@
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["Term"]">@Html.DisplayNameFor(model => model.Term)</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Term"]">@Html.DisplayNameFor(model => model.StudentTermId)</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["Status"]">@Html.DisplayNameFor(model => model.Status)</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["DegreePlan"]">@Html.DisplayNameFor(model => model.DegreePlan)</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DegreePlan"]">@Html.DisplayNameFor(model => model.DegreePlanId)</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["Credit"]">@Html.DisplayNameFor(model => model.Credit)</a>
@@ -43,7 +43,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Term)
+                @Html.DisplayFor(modelItem => item.StudentTermId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
