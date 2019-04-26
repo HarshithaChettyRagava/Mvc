@@ -24,6 +24,11 @@ $ git init
 ## Run app locally
 Click the clone from the repository and come to local repo and click .gitclone Open the the app in Visual Studio and run it.
 
+## Deploying the app
+Please reffer the folloeing link.
+
+https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/webapp?view=azure-devops&tabs=yaml
+
 ## Issues Tracking
 https://github.com/HarshithaChettyRagava/Mvc/issues
 
